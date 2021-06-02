@@ -27,7 +27,7 @@ public class Map implements KeyListener{
 	private boolean gameOver = false;
 	
 	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Map m = new Map();
 		m.initGame();
 		m.initUI();
@@ -182,12 +182,13 @@ public class Map implements KeyListener{
             	int y;
             	switch(body.getShape()) {
             	case rectangle:
-            		if(body instanceof Block)
-            			g.setColor(Color.CYAN);
-            		else if(body instanceof Wall)
-            			g.setColor(Color.RED);
-            		else if(body instanceof Drop) 
-            			g.setColor(Color.ORANGE);
+            		if(body instanceof Block) {
+						g.setColor(Color.CYAN);
+					} else if(body instanceof Wall) {
+						g.setColor(Color.RED);
+					} else if(body instanceof Drop) {
+						g.setColor(Color.ORANGE);
+					}
             		x = body.getPosition().getX()-body.getWidth()/2;
             		y = body.getPosition().getY()-body.getHeight()/2;
             		g.fillRect(x, y, body.getWidth(), body.getHeight());
@@ -232,8 +233,9 @@ public class Map implements KeyListener{
 			this.controller.setDir(1);
 			break;
 		case KeyEvent.VK_SPACE:
-			if(!this.controller.isFire())
+			if(!this.controller.isFire()) {
 				this.controller.fire();
+			}
 			break;
 		default:
 			break;
@@ -246,12 +248,14 @@ public class Map implements KeyListener{
 		// TODO Auto-generated method stub
 		switch(e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
-			if(this.controller.getDir() == -1)
+			if(this.controller.getDir() == -1) {
 				this.controller.setDir(0);
+			}
 			break;
 		case KeyEvent.VK_RIGHT:
-			if(this.controller.getDir() == 1)
+			if(this.controller.getDir() == 1) {
 				this.controller.setDir(0);
+			}
 			break;
 		default:
 			break;
