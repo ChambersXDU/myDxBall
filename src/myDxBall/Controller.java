@@ -27,8 +27,9 @@ public class Controller extends PhysicalBody implements CollisionalBody {
 		// TODO Auto-generated method stub
 		Vector2D np = new Vector2D(this.position.getX()+this.speed *this.dir, this.position.getY());
 		if(np.getX()> (this.width/2+this.map.left) 
-				&& np.getX() < (this.map.right - this.width/2))	
+				&& np.getX() < (this.map.right - this.width/2)) {
 			this.position = np;
+		}
 		
 		//ÇòÎ´·¢Éä£¬Ëæ×Å¿ØÖÆ°åÒÆ¶¯
 		if(!this.isFire) {
@@ -37,12 +38,13 @@ public class Controller extends PhysicalBody implements CollisionalBody {
 	}
 
 	public void setDir(int dir) {
-		if(dir > 0)
+		if(dir > 0) {
 			this.dir = 1;
-		else if(dir < 0)
+		} else if(dir < 0) {
 			this.dir = -1;
-		else
+		} else {
 			this.dir = 0;
+		}
 	}
 
 	@Override
@@ -50,10 +52,11 @@ public class Controller extends PhysicalBody implements CollisionalBody {
 		// TODO Auto-generated method stub
 		Vector2D oldDir = this.map.ball.getDir();
 		Vector2D newDir;
-		if (Math.abs(this.dir + oldDir.getX()) >= Math.abs(oldDir.getX()))
+		if (Math.abs(this.dir + oldDir.getX()) >= Math.abs(oldDir.getX())) {
 			newDir = oldDir.getXReverse();
-		else
+		} else {
 			newDir = oldDir.getReverse();
+		}
 		this.map.ball.setDir(newDir);
 
 	}

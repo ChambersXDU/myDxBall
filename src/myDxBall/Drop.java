@@ -54,10 +54,12 @@ public class Drop extends PhysicalBody implements CollisionalBody {
 	 * 		当掉出游戏界面时，道具摧毁
 	 */
 	public void check() {
-		if(this.getPosition().getY() > this.map.bottom)
+		if(this.getPosition().getY() > this.map.bottom) {
 			this.destroy();
-		if(this.isPhysicalBodyIn(this.map.controller))
+		}
+		if(this.isPhysicalBodyIn(this.map.controller)) {
 			this.onCollision();
+		}
 	}
 	
 	/**
@@ -82,12 +84,14 @@ public class Drop extends PhysicalBody implements CollisionalBody {
 	public void effect() {
 		switch(df) {
 		case doubleSpeed:
-			if(this.map.ball.getSpeed()<5)
+			if(this.map.ball.getSpeed()<5) {
 				this.map.ball.setSpeed(this.map.ball.getSpeed()*2);
+			}
 			break;
 		case halfSpeed:
-			if(this.map.ball.getSpeed()>1)
+			if(this.map.ball.getSpeed()>1) {
 				this.map.ball.setSpeed(this.map.ball.getSpeed()/2);
+			}
 			break;
 		}
 	}
