@@ -1,5 +1,8 @@
 package menu;
 
+import Test.TestGame;
+import myDxBall.Map;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,12 +15,12 @@ public class Starter  {
     }
 
     private JButton jButton1;
-    private JButton jButton2;
-    private JButton jButton3;
     private JLabel jLabel1;
     private JPanel jPanel1;
     private JPanel jPanel2;
     private JFrame jFrame;
+    private final int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private final int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     private void initComponents() {
         jFrame = new JFrame("DxBall Starter");
@@ -25,14 +28,12 @@ public class Starter  {
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame.setLayout(new GridLayout(2,1));
-
+        jFrame.setLocation((screenWidth - 200)/2, (screenHeight-200)/2);
 
         jPanel1 = new JPanel();
         jPanel2 = new JPanel();
 
         jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
 
         jLabel1 = new JLabel();
 
@@ -42,11 +43,19 @@ public class Starter  {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        Map map = new Map();
+                        map.initGame();
+                        map.initUI();
+                        map.run();
+                    }
+                }.start();
             }
         });
 
-        //jLabel1
         jLabel1.setIcon(new ImageIcon("materials\\DxBall.png"));
         jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
