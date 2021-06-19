@@ -47,6 +47,7 @@ public class Starter  {
                     @Override
                     public void run() {
                         super.run();
+                        jFrame.setVisible(false);
                         Map map = new Map();
                         map.initGame();
                         map.initUI();
